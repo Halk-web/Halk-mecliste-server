@@ -4,7 +4,7 @@ import { ProfileEntity } from "./profile.model";
 export interface Post {
     id?: string;
     title: string;
-    image?: Buffer; 
+    image?: string; 
     description: string;
     created_at: Date;
     profile_id: string;
@@ -18,8 +18,8 @@ export class PostEntity {
     @Column()
     title: string;
 
-    @Column({ type: "bytea", nullable: true }) 
-    image?: Buffer;
+    @Column({ type: "text", nullable: true }) 
+    image?: string;
 
     @Column()
     description: string;

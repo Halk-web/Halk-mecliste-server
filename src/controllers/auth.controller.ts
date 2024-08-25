@@ -56,7 +56,9 @@ export class AuthController {
     const id=req.params.id;
 
     try{
-      res.status(202).json(await this.authService.findById(id));
+      const user=await this.authService.findById(id);
+      console.log(id,"--->",user);
+      res.status(202).json(user);
     }
     catch(err){
       res.status(404).json(err);

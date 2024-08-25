@@ -12,6 +12,7 @@ export class PostController{
     async create(req:Request,res:Response):Promise<void>{
         try{
             const post=await this.postService.create(req.body as Post);
+            console.log(post);
             res.status(202).json(post);
         }catch(err){
             res.status(400).json(err);

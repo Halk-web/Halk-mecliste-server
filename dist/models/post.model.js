@@ -24,8 +24,8 @@ __decorate([
     __metadata("design:type", String)
 ], PostEntity.prototype, "title", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "bytea", nullable: true }),
-    __metadata("design:type", Buffer)
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
+    __metadata("design:type", String)
 ], PostEntity.prototype, "image", void 0);
 __decorate([
     (0, typeorm_1.Column)(),

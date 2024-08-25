@@ -11,10 +11,10 @@ class ProfileService {
         return await this.profileRepository.save(profile);
     }
     async findAll() {
-        return await this.profileRepository.find();
+        return await this.profileRepository.find({ relations: { user: true } });
     }
     async findById(id) {
-        return await this.profileRepository.findOneBy({ id });
+        return await this.profileRepository.findOne({ where: { id: id }, relations: { user: true } });
     }
     async findByUserId(id) {
         return await this.profileRepository.findOneBy({ user_id: id });

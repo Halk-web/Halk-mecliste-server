@@ -11,7 +11,7 @@ const authController = new AuthController(authService,profileService);
 
 authRouter.post('/register', authController.register.bind(authController));
 authRouter.post('/login', authController.login.bind(authController));
-authRouter.get("/findOne",authController.findOneById.bind(authController));
+authRouter.get("/findOne/:id",authController.findOneById.bind(authController));
 authRouter.post('/refresh', authController.refresh.bind(authController));
 authRouter.get('/me', authenticateToken, authController.me.bind(authController));
 
