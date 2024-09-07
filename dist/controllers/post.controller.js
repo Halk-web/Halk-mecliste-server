@@ -24,9 +24,9 @@ class PostController {
             res.status(400).json(err);
         }
     }
-    async findByTitle(req, res) {
+    async search(req, res) {
         try {
-            const post = await this.postService.findByTitle(req.body.title);
+            const post = await this.postService.search(req.params.title);
             res.status(202).json(post);
         }
         catch (err) {
@@ -37,6 +37,15 @@ class PostController {
         try {
             const post = await this.postService.findOneById(req.params.id);
             res.status(202).json(post);
+        }
+        catch (err) {
+            res.status(200).json(err);
+        }
+    }
+    async findByProfileId(req, res) {
+        try {
+            const posts = await this.postService.findOneByProfileId(req.params.profile_id);
+            res.status(202).json(posts);
         }
         catch (err) {
             res.status(200).json(err);

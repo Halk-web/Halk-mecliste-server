@@ -14,7 +14,7 @@ export class ProfileService {
     }
 
     async findAll(): Promise<ProfileEntity[]> {
-        return await this.profileRepository.find();
+        return await this.profileRepository.find({relations:{posts:true}});
     }
 
     async findById(id: string): Promise<ProfileEntity | null> {

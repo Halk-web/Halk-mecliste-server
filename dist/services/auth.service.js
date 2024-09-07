@@ -24,9 +24,17 @@ class AuthService {
         const user = await this.userRepository.findOne({ where: { email } });
         return user ? user : null;
     }
+    async findAll() {
+        const users = await this.userRepository.find({ relations: { profile: true } });
+        return users;
+    }
     async findById(id) {
         const user = await this.userRepository.findOne({ where: { id: id }, relations: { profile: true } });
         return user ? user : null;
+    }
+    async updateUserById(userId, userData) {
+        const updateUser = await this.userRepository.update(userId, userData);
+        return updateUser;
     }
     async validatePassword(user, password) {
         return await bcryptjs_1.default.compare(password, user.password);

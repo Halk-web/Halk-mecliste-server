@@ -4,7 +4,12 @@ import { PostEntity } from "./post.model";
 
 export interface Profile{
   id?:string;
+  profile_img?:string;
   user_id:string;
+  city:string;
+  politicalView:string;
+  party:string;
+  gender:string;
 }
 
 @Entity("profiles")
@@ -14,6 +19,21 @@ export class ProfileEntity {
 
   @Column({name:"user_id"})
   user_id:string;
+
+  @Column({ type: "text", nullable: true }) 
+  profile_img?: string;
+
+  @Column()
+  city:string;
+
+  @Column()
+  politicalView:string;
+
+  @Column()
+  party:string;
+
+  @Column()
+  gender:string;
 
   @OneToOne(() => UserEntity, user => user.profile)
   @JoinColumn({name:"user_id"}) 

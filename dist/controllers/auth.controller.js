@@ -12,8 +12,9 @@ class AuthController {
     }
     async register(req, res) {
         try {
-            const user = await this.authService.create(req.body);
-            const profile = await this.profileService.create({ user_id: user.id });
+            const { username, email, password, city, gender, party, politicalView } = req.body;
+            const user = await this.authService.create({ username: username, password: password, email: email });
+            const profile = await this.profileService.create({ user_id: user.id, city: city, gender: gender, party: party, politicalView: politicalView });
             console.log("user=", user, "profile=", profile);
             console.log("created user:", user);
             console.log("created profile:", profile);
@@ -46,8 +47,25 @@ class AuthController {
         const id = req.params.id;
         try {
             const user = await this.authService.findById(id);
-            console.log(id, "--->", user);
             res.status(202).json(user);
+        }
+        catch (err) {
+            res.status(404).json(err);
+        }
+    }
+    async updateUserById(req, res) {
+        try {
+            const updatedUser = await this.authService.updateUserById(req.params.id, req.body);
+            res.status(202).json(updatedUser);
+        }
+        catch (err) {
+            res.status(404).json(err);
+        }
+    }
+    async findAll(req, res) {
+        try {
+            const users = await this.authService.findAll();
+            res.status(202).json(users);
         }
         catch (err) {
             res.status(404).json(err);

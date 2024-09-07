@@ -25,6 +25,26 @@ __decorate([
     __metadata("design:type", String)
 ], ProfileEntity.prototype, "user_id", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
+    __metadata("design:type", String)
+], ProfileEntity.prototype, "profile_img", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], ProfileEntity.prototype, "city", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], ProfileEntity.prototype, "politicalView", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], ProfileEntity.prototype, "party", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], ProfileEntity.prototype, "gender", void 0);
+__decorate([
     (0, typeorm_1.OneToOne)(() => user_model_1.UserEntity, user => user.profile),
     (0, typeorm_1.JoinColumn)({ name: "user_id" }),
     __metadata("design:type", user_model_1.UserEntity)

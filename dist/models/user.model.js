@@ -32,21 +32,9 @@ __decorate([
     __metadata("design:type", String)
 ], UserEntity.prototype, "email", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], UserEntity.prototype, "city", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], UserEntity.prototype, "politicalView", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], UserEntity.prototype, "party", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], UserEntity.prototype, "gender", void 0);
+    (0, typeorm_1.Column)({ default: 0 }),
+    __metadata("design:type", Number)
+], UserEntity.prototype, "numberOfPosts", void 0);
 __decorate([
     (0, typeorm_1.OneToOne)(() => profile_model_1.ProfileEntity, profile => profile.user),
     __metadata("design:type", profile_model_1.ProfileEntity)

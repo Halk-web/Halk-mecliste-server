@@ -15,7 +15,7 @@ export class PostController{
             console.log(post);
             res.status(202).json(post);
         }catch(err){
-            res.status(400).json(err);
+            res.status(400).json(err);  
         }
     }
 
@@ -29,9 +29,9 @@ export class PostController{
         }
     }
 
-    async findByTitle(req:Request,res:Response):Promise<void>{
+    async search(req:Request,res:Response):Promise<void>{
         try{
-            const post=await this.postService.findByTitle(req.body.title);
+            const post=await this.postService.search(req.params.title);
             res.status(202).json(post);
         }catch(err){
             res.status(200).json(err);
@@ -43,6 +43,16 @@ export class PostController{
             const post=await this.postService.findOneById(req.params.id);
             res.status(202).json(post);
         }catch(err){
+            res.status(200).json(err);
+        }
+    }
+
+    async findByProfileId(req:Request,res:Response):Promise<void>{
+        try{
+            const posts=await this.postService.findOneByProfileId(req.params.profile_id);
+            res.status(202).json(posts);
+        }
+        catch(err){
             res.status(200).json(err);
         }
     }

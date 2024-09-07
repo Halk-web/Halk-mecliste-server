@@ -15,9 +15,10 @@ const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const database_1 = require("./database/postgresql/database");
 const post_router_1 = __importDefault(require("./routes/post.router"));
+const profile_router_1 = __importDefault(require("./routes/profile.router"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const port = process.env.PORT || 5000; // Port'u ortam değişkenlerinden al
+const port = process.env.PORT || 5000;
 // Initialize AuthService
 const authService = new auth_service_1.AuthService();
 // Initialize Passport
@@ -36,6 +37,7 @@ app.use(passport_1.default.initialize());
 // Routes
 app.use("/api/v1/auth", auth_router_1.default);
 app.use("/post", post_router_1.default);
+app.use("/profile", profile_router_1.default);
 app.get('/', auth_middleware_1.authenticateToken, (req, res) => {
     res.send('Hello NOD Readers!');
 });

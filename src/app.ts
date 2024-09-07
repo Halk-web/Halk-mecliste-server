@@ -10,11 +10,12 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import {AppDataSource} from "./database/postgresql/database";
 import postRouter from './routes/post.router';
+import profileRouter from './routes/profile.router';
 
 dotenv.config(); 
 
 const app = express();
-const port = process.env.PORT || 5000;  // Port'u ortam değişkenlerinden al
+const port = process.env.PORT || 5000;
 
 // Initialize AuthService
 const authService = new AuthService();
@@ -40,6 +41,7 @@ app.use(passport.initialize());
 // Routes
 app.use("/api/v1/auth", authRouter);
 app.use("/post",postRouter);
+app.use("/profile",profileRouter);
 
 app.get('/', authenticateToken, (req, res) => {
   res.send('Hello NOD Readers!');

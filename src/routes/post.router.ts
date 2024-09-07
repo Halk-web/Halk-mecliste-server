@@ -8,9 +8,10 @@ const postController=new PostController(postService);
 
 postRouter.post("/create",postController.create.bind(postController));
 postRouter.get("/findAll",postController.findAll.bind(postController));
-postRouter.get("/findByTitle",postController.findByTitle.bind(postController));
+postRouter.get("/search/:title",postController.search.bind(postController));
 postRouter.get("/findOne/:id",postController.findOneById.bind(postController));
-postRouter.delete("/delete",postController.delete.bind(postController));
+postRouter.get("/findByProfileId/:profile_id",postController.findByProfileId.bind(postController));
+postRouter.delete("/delete/:id",postController.delete.bind(postController));
 postRouter.post("/like",postController.likePost.bind(postController));
 postRouter.post("/dislike",postController.dislikePost.bind(postController));
 

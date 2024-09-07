@@ -6,10 +6,8 @@ export interface User {
     username: string;
     password: string;
     email:string;
-    city:string;
-    politicalView:string;
-    party:string;
-    gender:string;
+    numberOfPosts?:number;
+    profile?:any;
 }
 
 @Entity('users')
@@ -26,17 +24,8 @@ export class UserEntity {
   @Column()
   email:string;
 
-  @Column()
-  city:string;
-
-  @Column()
-  politicalView:string;
-
-  @Column()
-  party:string;
-
-  @Column()
-  gender:string;
+  @Column({default:0})
+  numberOfPosts?:number;
 
   @OneToOne(()=>ProfileEntity,profile=>profile.user)
   profile:ProfileEntity;

@@ -15,14 +15,24 @@ class PostService {
     async findAll() {
         return await this.postRepository.find({ relations: { profile: true, liked_by: true, disliked_by: true } });
     }
-    async findByTitle(title) {
-        return await this.postRepository.find({ where: { title: title } });
+    async search(title) {
+        const posts = await this.postRepository
+            .createQueryBuilder("post")
+            .leftJoinAndSelect("post.profile", "profile")
+            .leftJoinAndSelect("post.liked_by", "liked_by")
+            .leftJoinAndSelect("post.disliked_by", "disliked_by")
+            .where("post.title ILIKE :title", { title: `%${title}%` })
+            .getMany();
+        return posts;
     }
     async findOneById(id) {
         return await this.postRepository.findOne({
             where: { id },
             relations: { liked_by: true, disliked_by: true, profile: true },
         });
+    }
+    async findOneByProfileId(profile_id) {
+        return await this.postRepository.find({ where: { profile_id }, relations: { liked_by: true, disliked_by: true, profile: true } });
     }
     async delete(id) {
         return await this.postRepository.delete(id);

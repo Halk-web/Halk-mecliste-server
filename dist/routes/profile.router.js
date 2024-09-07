@@ -9,7 +9,7 @@ const profileController = new profile_controller_1.ProfileController(profileServ
 profileRouter.post("/create", profileController.create.bind(profileController));
 profileRouter.get("/findAll", profileController.findAll.bind(profileController));
 profileRouter.get("/:id", profileController.findById.bind(profileController));
-profileRouter.put("/:id", profileController.update.bind(profileController));
+profileRouter.put("/update/:id", profileController.update.bind(profileController));
 profileRouter.delete("/:id", profileController.delete.bind(profileController));
 exports.default = profileRouter;
 //# sourceMappingURL=profile.router.js.map

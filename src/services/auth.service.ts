@@ -25,9 +25,19 @@ export class AuthService {
     return user ? user : null;
   }
 
+  async findAll(){
+    const users=await this.userRepository.find({relations:{profile:true}});
+    return users;
+  }
+
   async findById(id: string): Promise<User | null> {
     const user = await this.userRepository.findOne({where:{id:id},relations:{profile:true}});
     return user ? user : null;
+  }
+
+  async updateUserById(userId:string,userData:any):Promise<any>{
+    const updateUser=await this.userRepository.update(userId,userData);
+    return updateUser;
   }
 
   async validatePassword(user: User, password: string): Promise<boolean> {
