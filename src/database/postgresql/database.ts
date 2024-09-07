@@ -18,5 +18,5 @@ export const AppDataSource = new DataSource({
     rejectUnauthorized: false,
   },
   entities: [UserEntity,ProfileEntity,PostEntity],
-  synchronize: false,
+  synchronize: true,
 });
