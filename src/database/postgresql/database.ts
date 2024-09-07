@@ -14,9 +14,9 @@ export const AppDataSource = new DataSource({
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
   url: `${process.env.POSTGRES_URL}`, 
-  // ssl: {
-  //   rejectUnauthorized: false,
-  // },
+  ssl: {
+    rejectUnauthorized: false,
+  },
   entities: [UserEntity,ProfileEntity,PostEntity],
-  synchronize: true,
+  synchronize: false,
 });

@@ -18,10 +18,10 @@ exports.AppDataSource = new typeorm_1.DataSource({
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.POSTGRES_DB,
     url: `${process.env.POSTGRES_URL}`,
-    // ssl: {
-    //   rejectUnauthorized: false,
-    // },
+    ssl: {
+        rejectUnauthorized: false,
+    },
     entities: [user_model_1.UserEntity, profile_model_1.ProfileEntity, post_model_1.PostEntity],
-    synchronize: true,
+    synchronize: false,
 });
 //# sourceMappingURL=database.js.map
